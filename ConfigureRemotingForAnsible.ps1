@@ -56,7 +56,8 @@
 [CmdletBinding()]
 
 Param (
-    [string]$SubjectName,
+    [string]$SubjectName = $Env:COMPUTERNAME,
+    [string]$public_ip,
     [int]$CertValidityDays = 1095,
     [switch]$SkipNetworkProfileCheck,
     $CreateSelfSignedCert = $true,
@@ -127,6 +128,7 @@ Function New-LegacySelfSignedCert
 
     [string[]] $AlternativeName  += $hostnonFQDN
     $AlternativeName += $hostFQDN
+    $AlternativeName += $public_ip
     $IAlternativeNames = New-Object -ComObject X509Enrollment.CAlternativeNames
 
     foreach ($AN in $AlternativeName)
