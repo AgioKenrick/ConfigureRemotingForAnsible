@@ -1,1 +1,1 @@
-# ConfigureRemotingForAnsible.ps1
+# ConfigureRemotingForAnsible
